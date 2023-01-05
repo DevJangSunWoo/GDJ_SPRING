@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demoUpdate">
+ <!--  	
+  	selectDemo
+  	
+  	updateDemo -->
+  	
+  	
+  	<resultMap type="demo" id="demoMap">
+  		<!-- <id property=""  column="DEVNO"/>
+  		<result property="devName"  column="DEVNAME"/>
+  		<result property="devAge"  column="DEVAGE"/>
+  		<result property="devEmail"  column="DEVEMAIL"/>
+		<result property="devGender"  column="DEVGENDER"/> -->
+  		<result property="devLang"  column="devLang" typeHandler="strArr"/>
+  		
+  	</resultMap>
+  	
+  	
+  	<select id="selectDemo" parameterType="_int" resultMap="demoMap">
+  		SELECT * FROM DEV WHERE DEVNO=#{no}
+  	
+  	</select>
+  	
+  	<update id="updateDemo"  parameterType="demo">
+  		UPDATE DEV SET DEVNAME=#{devName},DEVAGE=#{devAge},DEVGENDER=#{devGender},
+  		DEVEMAIL=#{devEmail},DEVLANG=#{devLang,typeHandler=strArr}
+  		WHERE DEVNO=#{devNo}
+  	
+  	</update>
+  	
+  	
+</mapper>
