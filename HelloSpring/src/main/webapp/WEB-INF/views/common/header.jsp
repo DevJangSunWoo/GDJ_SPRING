@@ -53,20 +53,24 @@
 						</li>
 					</ul>
 					
+					<c:if test="${loginMember==null}">
 						<button class="btn btn-outline-success my-2 my-sm-0"
 						data-toggle="modal" data-target="#loginModal">로그인</button>
-						&nbsp;&nbsp;&nbsp;
-						<%-- <button class="btn btn-outline-success my-2 my-sm-0"
-						onclick="location.assign('${path}/member/memberEnroll.do')">회원가입</button>
-					
-					
+						&nbsp;					
+						<button class="btn btn-outline-primary my-2 my-sm-0"
+						onclick="location.assign('${path}/member/memberEnroll.do');">
+							회원가입
+						</button>
+					</c:if>
+					<c:if test="${loginMember!=null}">
 						<span>
-							<a href="">
-							</a>님, 환영합니다.
+							<a href="${path}/member/memberView.do?userId=${loginMember.userId}"><c:out value="${loginMember.userName}"/> 님,  </a>
+							환영합니다.
 						</span>
-						<button class="btn btn-outline-success my-2 my-sm-0"
-						onclick="">로그아웃</button> --%>
-					
+						<button class="btn btn-outline-success my-2 my-sm-0" 
+						onclick="location.replace('${path}/member/memberLogout.do');">로그아웃</button>
+					</c:if>
+
 				</div>
 			</nav>	
 		</header>
@@ -82,14 +86,19 @@
 						</button>
 					</div>
 					
-					<div class="modal-body">
-																	
-					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-outline-success">로그인</button>
-						<button type="button" class="btn btn-outline-success"
-						data-dismiss="modal">취소</button>
-					</div>
+					<form action="${path}/member/loginMember.do" method="post">
+						<div class="modal-body">
+							<input type="text" name="userId" class="form-control"
+							placeholder="아이디입력" required><br>
+							<input type="password" name="password" class="form-control"
+							placeholder="패스워드 입력"  required>										
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-outline-success">로그인</button>
+							<button type="button" class="btn btn-outline-success"
+							data-dismiss="modal">취소</button>
+						</div>
+					</form>
 					
 				</div>
 			</div>

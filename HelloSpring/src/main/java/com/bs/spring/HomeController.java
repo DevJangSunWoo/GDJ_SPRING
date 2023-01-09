@@ -64,6 +64,7 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
+		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
@@ -85,7 +86,6 @@ public class HomeController {
 		
 		
 		//new 연산자 아에 못쓰는것은 아님
-		
 		//등록된 springbean  출력하기
 		
 //		a.setName("아롱이");
@@ -100,6 +100,31 @@ public class HomeController {
 		
 		//메인화면으로 출력해주는 mapping 메소드
 		//WEB-INF-//views/return값.jsp  -> request.getRequestDispatcher("WEB-INF/views/return값.jsp").forward(req,res);
+		
+		
+		//1월 9일  
+		//Logger 가 제공하는 메소드 이용해서 log 출력하기
+		//메소드 :debug ,info,warn,error 
+		//메소드는 출력되는 상황에 따라 결정해서 사용
+		//debug : 개발시에 사용하는 로그    // 변수명을 사용한다거나  그 흐름에서 움직이는 지확인하는ㄴ
+		//info : 프로그램 실해중 사용자에게 전달해야 하는 메세지 로그
+		//warn : 프로그램이 멈추지 않으나  비정상적으로 로직이 돌아갔을떄 경고 로그 // 사용자가 이상하게 이용할떄 경고하는 
+		//error : 에러가 났을떄 ! 로그 
+		
+		//logger 태그에  설정되어 있는 level에 따라 메소드 실행여부가 결정됨
+		//debug<info<warn<error
+		//  내가 디버그 결종했으면  디버그부터   에러까지 메소드 실행   만약  내가  info 설정했다  ㅑinfo 부터  에러까지
+  		
+		logger.debug("난 debug야");
+		logger.info("난 info");
+		logger.warn("난 warn 이랴");
+		logger.error("난 error이야");
+		
+		//logger로 다른 타입의 값 출력하기
+		// 왼쪾 매개변수에 패턴 설정
+		// 오른 쪽 매개변수는 오브젝트
+		logger.debug("foor {}",food);
+		
 		return "index";
 	}
 	

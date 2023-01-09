@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.1.xsd">
+	<!--단방향 암호화처리를 하는 클래스를 bean으로 등록  
+		BCryptPasswordEncoder 클래스를 이용
+		
+		이전방식 sha512  방식에서   변경할떄  sort소트값?을 이용하여  같은 1234를 암호화해도  다르게 나온다.
+		
+		
+		즉 암호화 처리가 강화되어  이전에  동등비교 방식이 안되어
+		
+		제공하는 match 라는 메소드를 이용하여    맞는지 확인한다.
+		
+
+	-->
+	
+	<bean id="bcryptPassword" 
+	class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	
+</beans>

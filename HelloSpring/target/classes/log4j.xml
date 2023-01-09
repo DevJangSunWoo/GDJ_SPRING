@@ -3,16 +3,47 @@
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
 	<!-- Appenders -->
+	<!--기록을 어떻게 남길지 
+		log를 출력하는 수단에 대한 내용을 설정하는 태그 -->
+		<!-- ConsoleAppender  콘솔창에 출력해주는 appender
+			param name="Target" value="System.out"  콘솔에 출력해주는
+			layout class="org.apache.log4j.PatternLayout   패턴을 정해서 
+			param name="ConversionPattern" value="%-5p: %c - %m%n    - 이양식으로 출력하게하는
+
+		 -->
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
+		 <layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" 
+			value="[%d{yyyy-MM-dd HH:mm:ss}] %-5p: [%l] - %m%n" />
+		</layout>
+	<!-- 	<layout class="org.apache.log4j.SimpleLayout"/> -->
+<!-- 	<layout class="org.apache.log4j.HTMLLayout"/> -->
+	<!-- <layout class="org.apache.log4j.xml.XMLLayout"/> -->
+	</appender>
+
+	<!--파일 appender 이용하기  -->	
+	<!--DailyRollingFileAppender 클래스 이용  -->
+	<appender name="fileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="c:/logs/spring-log.log"/>
+		<param name="append" value="true"/>
+		<param name="datePattern" value="yyyy-MM-dd"/>
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+			<param name="ConversionPattern" 
+			value="[%d{yyyy-MM-dd HH:mm:ss}] %-5p: [%l] - %m%n" />
 		</layout>
 	</appender>
 	
+	
+	
+	
 	<!-- Application Loggers -->
+	<!--로거에 패키지명은 대상이다.  com.bs.spring 에대한 설정이다.   -->
+	<!--메소드는 warn ,info,debug 도 있고 여러가지 있다. 여러가지 메소드중에서 알아서 찾아주는  -->
+	<!--내가 원하는 레벨을 설정하면  그것만 나오게한느  ->  level value="info"  수준만 찍게 할거야 뜻 -->
 	<logger name="com.bs.spring">
-		<level value="info" />
+		<level value="debug" />
+		<appender-ref ref="fileAppender"/>
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -33,6 +64,7 @@
 	</logger>
 
 	<!-- Root Logger -->
+	<!-- 설정안한 내용이 있으면  root를 사용    위에것을 상속받음 -->
 	<root>
 		<priority value="warn" />
 		<appender-ref ref="console" />
