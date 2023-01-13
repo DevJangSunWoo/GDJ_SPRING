@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -13,6 +15,7 @@
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!--즉, mapping으로 들어온 요청에 대해 location으로 매핑을 시켜주는 것이다.  -->
 	<resources mapping="/resources/**" location="/resources/" />
 
 
@@ -61,6 +64,55 @@
 	</beans:bean>
 	
 	
-
+	
+	<!-- 인터셉터 등록하기 -->
+	<interceptors>
+		<interceptor>
+			<!--주소패턴으로 설정하는 값 filter,servlet url-pattern 선언한것과 동일하게 작성  -->
+			<mapping path="/demo/*"/>
+			<!-- 특정 매핑주소에 대해 예외처리르 할 수 있다.   화면전환 같이 굳이  무겁게 갈 필요없다  물론  글쓰기 권한은 다르지만.... -->
+			<!-- /demo/demo.do  는 로그가 안찍힘 즉 exclude는 메인화면 같이 누구나 다들어갈 수 있는 곳에 사용하면 됨 -->
+			<exclude-mapping path="/demo/demo.do"/>
+			<beans:bean class="com.bs.spring.common.interceptor.LoggerInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/demo/demolist.do"/>
+			<beans:ref bean="logincheck"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/board/boardWrite.do"/>
+			<beans:ref bean="logincheck"/>
+		</interceptor>
+	</interceptors>
+	
+	<beans:bean id="logincheck" class="com.bs.spring.common.interceptor.LoginCheckInterceptor"/>
+	
+	<!--파일 업로드 처리할  resolver 를 등록하기  -->
+	<beans:bean  id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!--1024    최대 크기를 결정 -->
+		<beans:property name="maxUploadSize" value="104857600"/>
+	</beans:bean>
+		
+	<!--json 컨버터 등록하기  -->	
+	<beans:bean id="jacksonconverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+		<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<beans:property name="messageConverters">
+		<beans:list>
+		<beans:ref bean="jacksonconverter"/>
+		</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<!--websocket  클래스빈으로 등록하기 -->
+	<!--서버역할을 하는 클래스를 만듬  -->
+	<beans:bean id="chatting" class="com.bs.spring.websocket.ChattingServer"/>
+	
+	<websocket:handlers>
+		<websocket:mapping handler="chatting" path="/chatting"/>
+		<websocket:handshake-interceptors>
+			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+		</websocket:handshake-interceptors>
+	</websocket:handlers>
+	
 	
 </beans:beans>

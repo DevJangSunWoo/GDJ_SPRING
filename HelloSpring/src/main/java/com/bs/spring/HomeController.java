@@ -16,11 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import javax.inject.Qualifier;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bs.spring.common.AdminAccessException;
 import com.bs.spring.model.vo.Animal;
 import com.bs.spring.model.vo.Food;
 import com.bs.spring.model.vo.Person;
@@ -61,7 +63,7 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model) throws IllegalAccessException{
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		
@@ -71,6 +73,8 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
+		
+		if(1==1) throw new IllegalAccessException("내맘대로 에러!!");
 		
 		return "home";
 	}
@@ -92,8 +96,8 @@ public class HomeController {
 //		a.setAge(8);
 //		a.setGender("여");
 		
-		System.out.println(p);
-		System.out.println(food);
+//		System.out.println(p);
+//		System.out.println(food);
 		
 //		System.out.println(alonge);
 //		System.out.println("dog:"+dog);
@@ -115,18 +119,38 @@ public class HomeController {
 		//debug<info<warn<error
 		//  내가 디버그 결종했으면  디버그부터   에러까지 메소드 실행   만약  내가  info 설정했다  ㅑinfo 부터  에러까지
   		
-		logger.debug("난 debug야");
-		logger.info("난 info");
-		logger.warn("난 warn 이랴");
-		logger.error("난 error이야");
+//		logger.debug("난 debug야");
+//		logger.info("난 info");
+//		logger.warn("난 warn 이랴");
+//		logger.error("난 error이야");
 		
 		//logger로 다른 타입의 값 출력하기
 		// 왼쪾 매개변수에 패턴 설정
 		// 오른 쪽 매개변수는 오브젝트
-		logger.debug("foor {}",food);
+		//logger.debug("foor {}",food);
 		
 		return "index";
 	}
+	
+	@RequestMapping("/error.do")
+	public String loginFail() {
+		//인증실패 후 실행되는 메소드
+		throw new   AdminAccessException("로그인 실패");
+		 
+		
+	}
+	
+	
+	
+	@RequestMapping("/successLogin.do")
+	public String successLogin(Model m) {
+		//인증 후 실행되는 메소드
+		Object o=SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		logger.debug("{}",o);
+		
+		return "redirect:/";
+	}
+	
 	
 	
 }

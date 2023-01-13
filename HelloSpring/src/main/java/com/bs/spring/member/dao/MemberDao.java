@@ -1,5 +1,7 @@
 package com.bs.spring.member.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.bs.spring.demo.model.vo.Demo;
@@ -12,4 +14,5 @@ public interface MemberDao {
 	 
 	  int memberEnrollEnd(SqlSessionTemplate session, Member m);
 	 
+	   List<Member> memberList(SqlSessionTemplate session); 
 }

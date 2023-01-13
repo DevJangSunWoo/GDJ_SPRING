@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.bs.spring.model.vo.Animal;
 import com.bs.spring.model.vo.Person;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 // 빈 객체를 가지고 있는
 @Configuration
@@ -45,6 +46,10 @@ public class BeanConfiguration {
 	}
 	
 	
-	
+	@Bean
+	 public ObjectMapper mapper() {
+		return new  ObjectMapper();
+		
+	}
 	
 }

@@ -5,7 +5,7 @@
 	<!-- Appenders -->
 	<!--기록을 어떻게 남길지 
 		log를 출력하는 수단에 대한 내용을 설정하는 태그 -->
-		<!-- ConsoleAppender  콘솔창에 출력해주는 appender
+		<!-- org.apache.log4j.ConsoleAppender  콘솔창에 출력해주는 appender
 			param name="Target" value="System.out"  콘솔에 출력해주는
 			layout class="org.apache.log4j.PatternLayout   패턴을 정해서 
 			param name="ConversionPattern" value="%-5p: %c - %m%n    - 이양식으로 출력하게하는
@@ -22,7 +22,7 @@
 	<!-- <layout class="org.apache.log4j.xml.XMLLayout"/> -->
 	</appender>
 
-	<!--파일 appender 이용하기  -->	
+	<!--파일 appender 이용하기   로그를 파일로 저장하는것이다.  -->	
 	<!--DailyRollingFileAppender 클래스 이용  -->
 	<appender name="fileAppender" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="file" value="c:/logs/spring-log.log"/>

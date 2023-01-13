@@ -1,5 +1,7 @@
 package com.bs.spring.member.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +42,13 @@ public class MemberServiceImpl implements MemberService {
 		
 		
 	}
+
+	@Override
+	public List<Member> memberList() {
+		
+		return dao.memberList(session);
+	}
+	
+	
 	
 }

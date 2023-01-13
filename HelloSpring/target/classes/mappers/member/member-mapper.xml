@@ -2,7 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
  		<resultMap type="member"  id="memberMap">
- 			<result property="hobby" column="hobby" typeHandler="strArr"/>
+ 			<id property="userId" column="USERID" />
+  			<result property="userName" column="USERNAME"/>
+  			<result property="gender" column="GENDER"/>
+  			<result property="age" column="AGE"/>
+  			<result property="email" column="EMAIL"/>
+  			<result property="phone" column="PHONE"/>
+  			<result property="address" column="ADDRESS"/>		
+ 			<result property="hobby" column="HOBBY" typeHandler="strArr"/>
+ 			<result property="enrollDate" column="ENROLLDATE"/>
  		</resultMap>
  		
  		<select id="selectMemberById" parameterType="member"   resultMap="memberMap">
@@ -13,9 +21,13 @@
  		<insert id="memberEnrollEnd"  parameterType="member"  >
  			INSERT INTO SPRING.MEMBER VALUES(#{userId},#{password},#{userName},#{gender},#{age},#{email}
  			,#{phone},#{address},#{hobby,typeHandler=strArr},DEFAULT)
- 			
- 		
  		</insert>
+ 		
+ 		<select id="memberList" resultMap="memberMap"  >
+ 			SELECT *FROM MEMBER
+ 		
+ 		
+ 		</select>
  		
  		
 </mapper>

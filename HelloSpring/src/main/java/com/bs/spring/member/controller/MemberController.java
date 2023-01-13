@@ -1,24 +1,32 @@
 package com.bs.spring.member.controller;
 
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bs.spring.member.service.MemberService;
 import com.bs.spring.member.vo.Member;
+import com.google.gson.Gson;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @SessionAttributes({"loginMember"})
-@RequestMapping("/member")
+@RequestMapping("/member")   //// 이컨트롤러를 들어왔을떄    /member 라는  프리픽스가 붙음
 @Slf4j
-// 이컨트롤러를 들어왔을떄    /member 라는  프리픽스가 붙음
 public class MemberController {
 	
 	
@@ -34,7 +42,7 @@ public class MemberController {
 	
 	
 	@Autowired
-	private MemberController(MemberService service,BCryptPasswordEncoder passwordEncoder) {
+	public MemberController(MemberService service,BCryptPasswordEncoder passwordEncoder) {
 		this.service=service;
 		this.passwordEncoder=passwordEncoder;
 	}
@@ -161,6 +169,62 @@ public class MemberController {
 			}
 			
 			
+			
+			
+			
+		
+			@RequestMapping("/duplicateId.do")
+			public void duplicateId(String userId,HttpServletResponse response) throws IOException{
+				
+				Member m=service.selectMemberById(Member.builder().userId(userId).build());
+				
+				//response.setContentType("text/csv;charset=utf-8");
+				response.setContentType("application/json;charset=utf-8"); //#
+				
+				//response.getWriter().print(m==null?false:true);  //  아이디가 없어 있어
+				new Gson().toJson(m,response.getWriter());  //#
+			}
+			
+			
+			
+			// jackson 바인더를 이용해서 json응답 메소드 구현하기
+			//메소드에 @ResponseBody 어노테이션 적용
+			
+			
+			@RequestMapping("/duplicateConverter.do")
+			@ResponseBody
+			public Member  duplicateUserId(Member m) {
+				Member result=service.selectMemberById(m);
+				return result;  // 원래는 자바 객체나  json 객체로 // null 에대해서는 아무것도 없는것으로 생각함
+				
+			}
+			
 		
 		
+
+			@RequestMapping(value="/memberList.do")
+		//	@ResponseBody     //   자바 객체를 프론트안에 그자제로 보낸다 .  converter에 의해    json으로 바뀌어서 보내진다.
+			public @ResponseBody   List<Member> memberList(@RequestBody Member m){
+				List <Member> result=service.memberList();
+						return result;
+			}
+			
+			
+			
+			@RequestMapping(value="/ajax/insert",
+					consumes = MediaType.APPLICATION_JSON_VALUE,
+					produces = MediaType.APPLICATION_JSON_VALUE)
+			public @ResponseBody boolean insertTest(@RequestBody Member m) {
+				log.debug("{}",m);
+				return true;
+			}
+			
+			
+			@RequestMapping("/loginpage.do")
+			public String loginpage() {
+				
+				return "member/loginpage";
+			}
+			
+			
 }
