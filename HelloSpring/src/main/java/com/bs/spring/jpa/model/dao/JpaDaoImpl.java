@@ -24,7 +24,7 @@ public class JpaDaoImpl implements JpaDao {
 	public JpaMember selectMemberById(EntityManager em, Long memberId) {
 		
 		
-		return null;
+		return em.find(JpaMember.class, memberId);
 	}
 
 	@Override

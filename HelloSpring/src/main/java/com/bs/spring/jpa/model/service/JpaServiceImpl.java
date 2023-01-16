@@ -40,8 +40,12 @@ public class JpaServiceImpl implements JpaService {
 
 	@Override
 	public JpaMember selectMemberById(Long memberId) {
+		EntityTransaction et= em.getTransaction();
+		 et.begin(); // 트렌젝션 실행!
+		 JpaMember m= dao.selectMemberById(em, memberId);
+		 et.commit();
 		// TODO Auto-generated method stub
-		return null;
+		return m;
 	}
 
 	@Override

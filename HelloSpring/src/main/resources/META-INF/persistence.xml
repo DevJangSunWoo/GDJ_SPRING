@@ -19,7 +19,9 @@
 					Entity(DB테이블이랑 맵핑된 클래스)로 등록된 클래스를 자동으로 DB에 생성해주는 설정
 					개발중, 테스트할때 사용, 운영애플리케이션에서는 사용하지 않았으면 합니다.... 
 				 -->
-	<property name="hibernate.hbm2ddl.auto" value="create"/>
+				
+				 <!--drop 하는 구문  -->
+	<!-- <property name="hibernate.hbm2ddl.auto" value="create"/> -->
 	</properties>
 </persistence-unit>
 </persistence>
