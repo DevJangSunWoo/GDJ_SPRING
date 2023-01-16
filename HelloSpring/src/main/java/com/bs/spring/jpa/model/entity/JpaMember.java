@@ -16,7 +16,7 @@ import lombok.Data;
 @Entity
 public class JpaMember {
 
-	@Id
+	@Id// 컬럼으로 생성할때 pk 값을 설정한것
 	private long memberNo;
 	
 	private String memberId;
