@@ -15,7 +15,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 //생성한 클래스를 jpa와 연동하는 Entity로 등록하려면 어노테이션을 이용한다.
 //@Enttity어노테이션 -> jpa 관리한느 db와 연동되는 객체를 의마함.
 
@@ -27,6 +30,9 @@ import lombok.Data;
 @Table(name="jpa_member")// db테이블을 설정   schema,catalog 속성 
 //설정 uniqueConstraints  컬럼에 대한  unique   제약조건 설정 (테이블 레벨에서...)
 @SequenceGenerator(name="seq_jpamemberno",sequenceName = "seq_jpamemberno",initialValue = 1)// sequence 를 생성하는 어노테이션
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class JpaMember {
 
 	@Id// 컬럼으로 생성할때 pk 값을 설정한것

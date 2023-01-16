@@ -97,5 +97,8 @@ title 값을 전달해거 출력해야함 ->Main Page 가 출력 -->
  	}
 
 </script>
+	<h1> test</h1>
+	<a   href="${path}/jap/insert"> jap 회원 저장하기</a>
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <!-- 푸터 불러오기 -->
