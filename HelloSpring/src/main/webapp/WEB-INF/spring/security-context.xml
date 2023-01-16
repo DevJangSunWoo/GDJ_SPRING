@@ -66,6 +66,14 @@
 				<security:password-encoder ref="bcryptPassword"/>
 			</security:authentication-provider> -->
 			
+			<!--
+				db와 연동하여 인증처리하는 provider 제공하기
+			  	1.인증한 내뇽을 저장할 클래스를  생성 -> User(클래스) ,UserDetails 인터페이스 구현     // 인증기간이 만효됬는지 에대한 메소드 있음
+			  	2.인증을 처리하는 service를 구현을 해줌 UserDetailServie 인터페이스 구현    
+			  	3.security:authentication-provider 를 이용해서 service를설정을 해줌
+			  	ex.context :component-scan등록해서 springbean 을 가져오게 설정하기 
+			  -->
+			
 			
 			
 			
