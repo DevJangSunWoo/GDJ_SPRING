@@ -17,12 +17,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.bs.spring.common.AdminAccessException;
+import com.bs.spring.member.vo.Member;
 import com.bs.spring.model.vo.Animal;
 import com.bs.spring.model.vo.Food;
 import com.bs.spring.model.vo.Person;
@@ -31,6 +34,7 @@ import com.bs.spring.model.vo.Person;
  * Handles requests for the application home page.
  */
 @Controller
+@SessionAttributes({"loginMember"})
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -147,6 +151,13 @@ public class HomeController {
 		//인증 후 실행되는 메소드
 		Object o=SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		logger.debug("{}",o);
+		
+		
+		m.addAttribute("loginMember",Member.builder().userId(((User)o).getUsername()).build());
+		
+		
+		
+		
 		
 		return "redirect:/";
 	}
