@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.bs.spring.member.vo.Member" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
@@ -28,7 +29,10 @@
 		<header>
 			<div id="header-container">
 				<h2>${param.title}</h2>
-				<p>시큐리티 세션값 :${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}  : 즉 시큐리티가 관리하는 세션값  세큐리티는 보안을 중시해서 다른 정보 가져오지 않음 패스워드만 가져옴	</p>
+				<p>시큐리티 세션값 :${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username }  // 즉 시큐리티가 관리하는 세션값  세큐리티는 보안을 중시해서 다른 정보 가져오지 않음 패스워드만 가져옴//	
+				나이: ${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.age } // principal은 오브젝트가 들어오고  그안에  age가 들어옴//
+				이메일: ${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.email } 
+				</p>
 			</div>
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<a class="navbar-brand" href="#">
@@ -75,7 +79,7 @@
 						<button class="btn btn-outline-dark my-2 my-sm-0"
 						onclick="chattingPageOpen();">채팅하기</button>
 						<button class="btn btn-outline-success my-2 my-sm-0" 
-						onclick="location.replace('${path}/member/memberLogout.do');">로그아웃</button>
+						onclick="location.replace('${path}/logout');">로그아웃</button>
 					</c:if>
 
 				</div>
@@ -93,7 +97,7 @@
 						</button>
 					</div>
 					
-					<form action="${path}/member/loginMember.do" method="post">
+					<form action="${path}/login" method="post">
 						<div class="modal-body">
 							<input type="text" name="userId" class="form-control"
 							placeholder="아이디입력" required><br>

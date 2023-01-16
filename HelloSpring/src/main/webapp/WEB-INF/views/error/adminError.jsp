@@ -11,7 +11,10 @@
 	<jsp:param name="title" value=" "/>
 </jsp:include>
 	
-	<h2  style="color:red" >  관리자만 접근할수 있다.</h2>
+	<h2  style="color:red" > 
+	<%-- <%=exception.getMessage()%> --%>
+	  관리자만 접근할수 있습니다.
+	</h2>
 	<h2>  exception 이엘테그로 접근이 안된디.</h2>
 	<script>
 		setTimeout(()=>{location.replace("${path}")},3000);

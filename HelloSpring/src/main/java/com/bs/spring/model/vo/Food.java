@@ -18,11 +18,11 @@ public class Food {
 	
 	//   setter  메소드에  @Autowired  사용가능
 	//특정 지정하고 싶을떄  @Qualifier  사용
-	@Autowired
-	@Qualifier(value="yeonji")
-	public void setPerson(Person p) {
-		this.p=p;
-		
-	}
+//	@Autowired
+//	@Qualifier(value="yeonji")
+//	public void setPerson(Person p) {
+//		this.p=p;
+//		
+//	}
 	
 }

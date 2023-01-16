@@ -35,6 +35,9 @@ public class SecurityService implements UserDetailsService {
 		// username에 id가 들어감
 		Member m=dao.selectMemberById (session,Member.builder().userId(username).build());
 		
+		//로그인 실패시 처리
+		//username을 찾을 수 없다.
+		if(m==null) throw new UsernameNotFoundException(username);	
 		
 		
 		return m;

@@ -45,23 +45,23 @@
 	</beans:bean>  -->
 	
 	<!-- 매개변수 있는 생성자로 초기화하기 -->
-	<beans:bean id="alonge" class="com.bs.spring.model.vo.Animal">
+	<!-- <beans:bean id="alonge" class="com.bs.spring.model.vo.Animal">
 		<beans:constructor-arg index="0" value="아롱이2"/>
 		<beans:constructor-arg index="1" value="15"/>
-		<!-- <beans:constructor-arg index="2" value="남"/>
-		<beans:constructor-arg index="3" value="8.8"/> -->
-	</beans:bean>
+		<beans:constructor-arg index="2" value="남"/>
+		<beans:constructor-arg index="3" value="8.8"/>
+	</beans:bean> -->
 	
 	<!--init-method  이객체가 생성될떄 어떤 메소드를 실행하게 하는것  -->
 	<!--destroyTest  이객체가 소멸될떄 어떤 메소드를 실행하게 하는것  -->
-	<beans:bean id="dog" class="com.bs.spring.model.vo.Animal"
-	init-method="initTest" destroy-method="destroyTest"	/>
+	<!-- <beans:bean id="dog" class="com.bs.spring.model.vo.Animal"
+	init-method="initTest" destroy-method="destroyTest"	/> -->
 	
-	<beans:bean id="yeonji" class="com.bs.spring.model.vo.Person">
+	<!-- <beans:bean id="yeonji" class="com.bs.spring.model.vo.Person">
 		<beans:property name="name"  value="연지"></beans:property>
 		<beans:property name="age"  value="31"></beans:property>
 		<beans:property name="myAnimal"  ref="alonge"></beans:property>
-	</beans:bean>
+	</beans:bean> -->
 	
 	
 	

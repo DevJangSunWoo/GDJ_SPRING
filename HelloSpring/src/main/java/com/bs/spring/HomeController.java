@@ -44,19 +44,21 @@ public class HomeController {
 	//	등록되어있는 springbean 은 필드선언해서 사용
 	//@Autowired   처음 기준은 타입임    만약 빈에 동일한 타입이 두개 지정되면 에러가 나옴
 	// 헤결방법  필드명을  id값과 일치하게 넣어주면됨.
-	@Autowired
-	@Qualifier(value="alonge")
-	private Animal a ;   //  
-	
-	
-	@Autowired
-	@Qualifier(value="dog")
-	private Animal b;
-	
-	
-	@Autowired
-	@Qualifier(value="getDongmin")
-	private Person p;
+
+	// Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'a'; nested except  를 위한 주석 처리
+//	@Autowired
+//	@Qualifier(value="alonge")
+//	private Animal a ;   //  
+//	
+//	
+//	@Autowired
+//	@Qualifier(value="dog")
+//	private Animal b;
+//	
+//	
+//	@Autowired
+//	@Qualifier(value="getDongmin")
+//	private Person p;
 	
 	
 	//required=false    객체가없으면 null 출력해라 의미임
@@ -153,9 +155,9 @@ public class HomeController {
 		logger.debug("{}",o);
 		
 		
-		m.addAttribute("loginMember",Member.builder().userId(((User)o).getUsername()).build());
-		
-		
+	//	m.addAttribute("loginMember",Member.builder().userId(((User)o).getUsername()).build());
+		//이제는 userdetail 을 이용하여 구현했으니  이제는 user로 형변화 하면 안됨
+		m.addAttribute("loginMember",(Member)o);
 		
 		
 		
