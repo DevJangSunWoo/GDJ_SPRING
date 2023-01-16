@@ -1,5 +1,6 @@
 package com.bs.spring.jpa.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -51,13 +52,31 @@ public class JpaServiceImpl implements JpaService {
 	@Override
 	public void updateMember(Map<String, Object> param, Long memberId) {
 		// TODO Auto-generated method stub
-
+		EntityTransaction et= em.getTransaction();
+		 et.begin(); // 트렌젝션 실행!
+		
+		 dao.updateMember(em,param, memberId);
+		 et.commit();
+		
+		
 	}
 
 	@Override
 	public void deleteMember(Long memberId) {
 		// TODO Auto-generated method stub
-
+		EntityTransaction et= em.getTransaction();
+		 et.begin(); // 트렌젝션 실행!
+		
+		 dao.deleteMember(em, memberId);
+		 et.commit();
+		
+		
 	}
 
+	
+	@Override
+	public List<JpaMember> selectMemberAll() {
+		return dao.selectMemberAll(em);
+	}
+	
 }

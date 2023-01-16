@@ -1,5 +1,6 @@
 package com.bs.spring.jpa.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.bs.spring.jpa.model.entity.JpaMember;
@@ -13,6 +14,6 @@ public interface JpaService {
 	
 	void deleteMember(Long memberId);
 	
-	
+	List<JpaMember> selectMemberAll();
 	
 }

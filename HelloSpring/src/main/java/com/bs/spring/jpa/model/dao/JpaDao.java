@@ -1,5 +1,6 @@
 package com.bs.spring.jpa.model.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -16,6 +17,8 @@ void insertMember(EntityManager em,JpaMember m);
 	void updateMember(EntityManager em,Map<String,Object> param,Long memberId);
 	
 	void deleteMember(EntityManager em,Long memberId);
+	
+	List<JpaMember> selectMemberAll(EntityManager em);
 	
 	
 }
