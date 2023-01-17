@@ -107,23 +107,24 @@ title 값을 전달해거 출력해야함 ->Main Page 가 출력 -->
 	
 	<a   href="${path}/jpa/members"> 전체 회원 조회하기</a>
 	
+	<br>
 	<a   href="${path}/jpa/member?id=1"> jap 회원 조회하기</a>
-	
+	<br>
 	<a   href="${path}/jpa/member/search?height=180.5"> jap  매개변수 받아서   조건으로  회원 조회하기</a>
-	
+	<br>
 	<a   href="${path}/jpa/update?no=1&age=20&height=190.5&intro=세헤복받아라"> jap 회원 수정하기</a>
 	<a   href="${path}/jpa/delete?no=1"> jap 회원 삭제하기</a>
-	
+	<br>
 	<a   href="${path}/jpa/insertMember"> jap 다대일 클래스 저장</a>
-	
+	<br>
 	<a   href="${path}/jpa/major?no=1">학과 조회</a>
-	
+	<br>
 	
 	<a   href="${path}/jpa/insertStudentClub">다대다 저장하기</a>
-	
-	<a   href="${path}/jpa/selectStudent?no=1">다대다  조회</a>
-	
-	<a   href="${path}/jpa/selectClub?no=1">다대다  조회</a>
-			
+	<br>
+	<a   href="${path}/jpa/selectStudent?no=26">다대다   학생 조회</a>
+	<br>
+	<a   href="${path}/jpa/selectClub?no=24">다대다  클럽 조회</a>
+	<br>		
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <!-- 푸터 불러오기 -->

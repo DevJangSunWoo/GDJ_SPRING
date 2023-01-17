@@ -134,10 +134,10 @@ public class JpaDaoImpl implements JpaDao {
 		
 		
 		//#
-		StudentClubs sc= StudentClubs.builder().student(s).club(c).enrollDate(new Date()).build();
-		StudentClubs sc1= StudentClubs.builder().student(s1).club(c1).enrollDate(new Date()).build();
-		StudentClubs sc2= StudentClubs.builder().student(s).club(c2).enrollDate(new Date()).build();
-		StudentClubs sc3= StudentClubs.builder().student(s1).club(c2).enrollDate(new Date()).build();
+//		StudentClubs sc= StudentClubs.builder().student(s).club(c).enrollDate(new Date()).build();
+//		StudentClubs sc1= StudentClubs.builder().student(s1).club(c1).enrollDate(new Date()).build();
+//		StudentClubs sc2= StudentClubs.builder().student(s).club(c2).enrollDate(new Date()).build();
+//		StudentClubs sc3= StudentClubs.builder().student(s1).club(c2).enrollDate(new Date()).build();
 		
 		em.persist(c);
 		em.persist(c1);
@@ -148,13 +148,14 @@ public class JpaDaoImpl implements JpaDao {
 		em.persist(s2);
 		em.persist(s3);
 		em.persist(s4);
-		
+		StudentClubs sc= StudentClubs.builder().student(s).club(c).enrollDate(new Date()).build();
+
 		
 		//#
 		em.persist(sc);
-		em.persist(sc1);
-		em.persist(sc2);
-		em.persist(sc3);
+//		em.persist(sc1);
+//		em.persist(sc2);
+//		em.persist(sc3);
 		
 		
 		
