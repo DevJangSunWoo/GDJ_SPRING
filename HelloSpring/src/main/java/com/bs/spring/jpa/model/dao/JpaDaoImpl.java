@@ -61,5 +61,14 @@ public class JpaDaoImpl implements JpaDao {
 	}
 	
 	
+	// 페이징 처리는  sort of 등을 사용하여 할수 있다.
+	@Override
+	public List<JpaMember> selectMemberSearch(EntityManager em,Double height){
+		
+		return 	em.createQuery("select m from JpaMember m where height>=:param")
+			.setParameter("param", height)
+			.getResultList();
+	}
+	
 	
 }

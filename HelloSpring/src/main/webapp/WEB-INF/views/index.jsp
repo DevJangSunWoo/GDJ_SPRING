@@ -108,6 +108,9 @@ title 값을 전달해거 출력해야함 ->Main Page 가 출력 -->
 	<a   href="${path}/jpa/members"> 전체 회원 조회하기</a>
 	
 	<a   href="${path}/jpa/member?id=1"> jap 회원 조회하기</a>
+	
+	<a   href="${path}/jpa/member/search?height=180.5"> jap  매개변수 받아서   조건으로  회원 조회하기</a>
+	
 	<a   href="${path}/jpa/update?no=1&age=20&height=190.5&intro=세헤복받아라"> jap 회원 수정하기</a>
 	<a   href="${path}/jpa/delete?no=1"> jap 회원 삭제하기</a>
 			

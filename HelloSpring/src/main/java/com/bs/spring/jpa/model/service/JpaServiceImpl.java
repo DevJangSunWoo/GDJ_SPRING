@@ -78,5 +78,11 @@ public class JpaServiceImpl implements JpaService {
 	public List<JpaMember> selectMemberAll() {
 		return dao.selectMemberAll(em);
 	}
+	@Override
+	public	 List<JpaMember>  selectMemberSearch(Double height){
+		
+		return dao.selectMemberSearch(em,height);
+	}
+	
 	
 }

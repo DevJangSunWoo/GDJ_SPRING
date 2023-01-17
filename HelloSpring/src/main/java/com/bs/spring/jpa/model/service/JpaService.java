@@ -15,5 +15,8 @@ public interface JpaService {
 	void deleteMember(Long memberId);
 	
 	List<JpaMember> selectMemberAll();
+
+	List<JpaMember>  selectMemberSearch(Double height);
+	
 	
 }

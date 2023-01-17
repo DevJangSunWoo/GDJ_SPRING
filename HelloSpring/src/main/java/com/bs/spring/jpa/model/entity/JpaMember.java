@@ -29,7 +29,7 @@ import lombok.NoArgsConstructor;
 @Entity //(name="jpaMember")   기본적으로  클래스 이름을 가져다씀
 @Table(name="jpa_member")// db테이블을 설정   schema,catalog 속성 
 //설정 uniqueConstraints  컬럼에 대한  unique   제약조건 설정 (테이블 레벨에서...)
-@SequenceGenerator(name="seq_jpamemberno",sequenceName = "seq_jpamemberno",initialValue = 1)// sequence 를 생성하는 어노테이션
+@SequenceGenerator(name="seq_jpamemberno",sequenceName = "seq_jpamemberno",initialValue = 1,allocationSize = 1)// sequence 를 생성하는 어노테이션
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

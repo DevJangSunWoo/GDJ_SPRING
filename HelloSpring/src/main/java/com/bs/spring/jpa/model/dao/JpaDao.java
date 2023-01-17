@@ -20,5 +20,5 @@ void insertMember(EntityManager em,JpaMember m);
 	
 	List<JpaMember> selectMemberAll(EntityManager em);
 	
-	
+	List<JpaMember> selectMemberSearch(EntityManager em,Double height);
 }
