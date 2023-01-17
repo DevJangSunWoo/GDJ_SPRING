@@ -12,6 +12,7 @@ import com.bs.spring.jpa.model.entity.Club;
 import com.bs.spring.jpa.model.entity.JpaMember;
 import com.bs.spring.jpa.model.entity.Major;
 import com.bs.spring.jpa.model.entity.Student;
+import com.bs.spring.jpa.model.entity.StudentClubs;
 
 @Repository
 public class JpaDaoImpl implements JpaDao {
@@ -125,12 +126,18 @@ public class JpaDaoImpl implements JpaDao {
 		Club c2=Club.builder().name("코딩").location("정보화 교육실").build();
 		
 		
-		s.setClubs(List.of(c1,c2));
-		s2.setClubs(List.of(c2));
-		s1.setClubs(List.of(c1,c2,c));
-		s3.setClubs(List.of(c));
-		s4.setClubs(List.of(c));
+//		s.setClubs(List.of(c1,c2));
+//		s2.setClubs(List.of(c2));
+//		s1.setClubs(List.of(c1,c2,c));
+//		s3.setClubs(List.of(c));
+//		s4.setClubs(List.of(c));
 		
+		
+		//#
+		StudentClubs sc= StudentClubs.builder().student(s).club(c).enrollDate(new Date()).build();
+		StudentClubs sc1= StudentClubs.builder().student(s1).club(c1).enrollDate(new Date()).build();
+		StudentClubs sc2= StudentClubs.builder().student(s).club(c2).enrollDate(new Date()).build();
+		StudentClubs sc3= StudentClubs.builder().student(s1).club(c2).enrollDate(new Date()).build();
 		
 		em.persist(c);
 		em.persist(c1);
@@ -141,6 +148,14 @@ public class JpaDaoImpl implements JpaDao {
 		em.persist(s2);
 		em.persist(s3);
 		em.persist(s4);
+		
+		
+		//#
+		em.persist(sc);
+		em.persist(sc1);
+		em.persist(sc2);
+		em.persist(sc3);
+		
 		
 		
 		

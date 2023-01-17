@@ -6,9 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -39,15 +37,16 @@ public class Student {
 	
 	private Integer classNumber;
 	
-	//다대다 관계를 설정하기
-	@ManyToMany
-	@JoinTable(name = "student_club",
-		joinColumns = @JoinColumn(name="studentNo"),  // 혅 엔티티티의  pk를 참조할 컬럼
-		inverseJoinColumns= @JoinColumn(name="clubNo")	// 연결된 상대방 엔티티의 pk를 참조할 컬럼
-	)
-	private List<Club> clubs;
+//	//다대다 관계를 설정하기
+//	@ManyToMany
+//	@JoinTable(name = "student_club",
+//		joinColumns = @JoinColumn(name="studentNo"),  // 혅 엔티티티의  pk를 참조할 컬럼
+//		inverseJoinColumns= @JoinColumn(name="clubNo")	// 연결된 상대방 엔티티의 pk를 참조할 컬럼
+//	)
+	//private List<Club> clubs;
 	
-	
+	@OneToMany(mappedBy = "student")
+	private List<StudentClubs>   studentClubs;
 	
 	
 	

@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -35,17 +36,22 @@ public class Club {
 	private String location;
 	
 	
-	@ManyToMany(mappedBy="clubs")
-	private List<Student> students;
+//	@ManyToMany(mappedBy="clubs")
+//	private List<Student> students;
+	
+	
+	@OneToMany(mappedBy = "club")
+	private List<StudentClubs>  studentClubs;
+	
 	
 	
 	//overflow 방지
 	public String toString() {
 		String temp="";
-		for(Student s :students) {
-			temp+=s.getStudentName()+" "+ s.getGrade()+" "+ s.getClassNumber()+ "%";
-			
-		}
+//		for(Student s :students) {
+//			temp+=s.getStudentName()+" "+ s.getGrade()+" "+ s.getClassNumber()+ "%";
+//			
+//		}
 		
 		
 		return clubNo+" " +name+" "+location+" "+temp;
