@@ -21,7 +21,7 @@
 				 -->
 				
 				 <!--drop 하는 구문  -->
-	<!-- <property name="hibernate.hbm2ddl.auto" value="create"/> -->
+	<property name="hibernate.hbm2ddl.auto" value="create"/>
 	</properties>
 </persistence-unit>
 </persistence>
