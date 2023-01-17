@@ -9,7 +9,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -59,5 +61,17 @@ public class JpaMember {
 	
 //	@Lob// BLOB으로 처리됨
 //	private byte[] data;
+	
+	
+	//멤버는 하나의 학과를 가진다.   //    db에가서  그 pk값을 가져와서 처리
+	//연관관계를 표시하는 어노테이션을 작성
+	//@oneTwoMany,@ManyToOne, @OneToOne,@ManyToMany
+	//앞에 있는것 이 그 클래스
+	//회원은 많아  학과는 하나
+	@ManyToOne
+	@JoinColumn(name="majorNo")  // 원래 클래스에는 없지만  참조키 컬럼을 생성한다 // 조인컬럼임
+	private Major major;  // 필드멤버가 객체면 one  리스트면  Many
+	
+	
 	
 }
