@@ -11,6 +11,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +25,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @SequenceGenerator(name ="seq_studentNo",sequenceName = "seq_studentNo",allocationSize = 1 )
-
+//json으로  파싱할떄 무한루칭 방지하기
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 public class Student {
 	
 	@Id

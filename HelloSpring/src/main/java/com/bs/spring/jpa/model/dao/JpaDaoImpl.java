@@ -8,8 +8,10 @@ import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
 
+import com.bs.spring.jpa.model.entity.Club;
 import com.bs.spring.jpa.model.entity.JpaMember;
 import com.bs.spring.jpa.model.entity.Major;
+import com.bs.spring.jpa.model.entity.Student;
 
 @Repository
 public class JpaDaoImpl implements JpaDao {
@@ -105,6 +107,62 @@ public class JpaDaoImpl implements JpaDao {
 		// TODO Auto-generated method stub
 		return em.find(Major.class, no);
 	}
+
+	@Override
+	public void insertStudentClub(EntityManager em) {
+		// TODO Auto-generated method stub
+		
+		Student s=Student.builder().studentName("김유준").grade(3).classNumber(1).build();
+		Student s1=Student.builder().studentName("이동민").grade(2).classNumber(2).build();
+		Student s2=Student.builder().studentName("임연지").grade(3).classNumber(3).build();
+		Student s3=Student.builder().studentName("이병도").grade(3).classNumber(3).build();
+		Student s4=Student.builder().studentName("큐티장").grade(2).classNumber(2).build();
+		
+		
+		
+		Club c=Club.builder().name("불량").location("체육관").build();
+		Club c1=Club.builder().name("등산").location("뒷산").build();
+		Club c2=Club.builder().name("코딩").location("정보화 교육실").build();
+		
+		
+		s.setClubs(List.of(c1,c2));
+		s2.setClubs(List.of(c2));
+		s1.setClubs(List.of(c1,c2,c));
+		s3.setClubs(List.of(c));
+		s4.setClubs(List.of(c));
+		
+		
+		em.persist(c);
+		em.persist(c1);
+		em.persist(c2);
+		
+		em.persist(s);
+		em.persist(s1);
+		em.persist(s2);
+		em.persist(s3);
+		em.persist(s4);
+		
+		
+		
+	}
+	
+	
+	@Override
+	public Student selectStudent(EntityManager em,Long no) {
+		
+		return em.find(Student.class, no);
+	}
+
+	@Override
+	public Club selectClub(EntityManager em, Long no) {
+		// TODO Auto-generated method stub
+		return em.find(Club.class, no);
+		
+	}
+	
+	
+	
+	
 	
 	
 	

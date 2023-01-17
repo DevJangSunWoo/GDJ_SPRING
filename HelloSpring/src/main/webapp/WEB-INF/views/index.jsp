@@ -119,6 +119,11 @@ title 값을 전달해거 출력해야함 ->Main Page 가 출력 -->
 	<a   href="${path}/jpa/major?no=1">학과 조회</a>
 	
 	
+	<a   href="${path}/jpa/insertStudentClub">다대다 저장하기</a>
+	
+	<a   href="${path}/jpa/selectStudent?no=1">다대다  조회</a>
+	
+	<a   href="${path}/jpa/selectClub?no=1">다대다  조회</a>
 			
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <!-- 푸터 불러오기 -->

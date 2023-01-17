@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bs.spring.jpa.model.dao.JpaDao;
+import com.bs.spring.jpa.model.entity.Club;
 import com.bs.spring.jpa.model.entity.JpaMember;
 import com.bs.spring.jpa.model.entity.Major;
+import com.bs.spring.jpa.model.entity.Student;
 
 @Service
 public class JpaServiceImpl implements JpaService {
@@ -102,8 +104,34 @@ public class JpaServiceImpl implements JpaService {
 		// TODO Auto-generated method stub
 		return dao.selectMajor(em,no);
 	}
+
+	@Override
+	public void insertStudentClub() {
+		// TODO Auto-generated method stub
+		EntityTransaction et= em.getTransaction();
+		 et.begin(); // 트렌젝션 실행!
+		
+		 dao.insertStudentClub(em);
+		
+		 et.commit();
+		
+		
+	}
 	
 
+	@Override
+	public Student selectStudent(Long no) {
+		
+		return  dao.selectStudent(em, no);
+	}
+
+	@Override
+	public Club selectClub(Long no) {
+		// TODO Auto-generated method stub
+		return  dao.selectClub(em, no);
+	}
+	
+	
 	
 	
 	
