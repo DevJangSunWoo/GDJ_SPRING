@@ -23,6 +23,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 //생성한 클래스를 jpa와 연동하는 Entity로 등록하려면 어노테이션을 이용한다.
 //@Enttity어노테이션 -> jpa 관리한느 db와 연동되는 객체를 의마함.
+import lombok.ToString;
 
 
 //자바 코드로 되있는 테이블이라고 생각하기
@@ -33,6 +34,7 @@ import lombok.NoArgsConstructor;
 //설정 uniqueConstraints  컬럼에 대한  unique   제약조건 설정 (테이블 레벨에서...)
 @SequenceGenerator(name="seq_jpamemberno",sequenceName = "seq_jpamemberno",initialValue = 1,allocationSize = 1)// sequence 를 생성하는 어노테이션
 @Builder
+@ToString(exclude="major")
 @AllArgsConstructor
 @NoArgsConstructor
 public class JpaMember {
