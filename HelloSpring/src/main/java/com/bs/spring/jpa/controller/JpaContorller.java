@@ -86,11 +86,13 @@ public class JpaContorller {
 	}
 	
 	
-	@RequestMapping("/jpa/membersearch")
+	@RequestMapping("/jpa/member/search")
 	public String selectMemberSearch(Double height) {
 		
-		service.selectMemberSearch(height);
+		List<JpaMember>	list=service.selectMemberSearch(height);
 				
+		log.debug("{}",list);
+		
 				return "redirect:/";
 	}
 	
