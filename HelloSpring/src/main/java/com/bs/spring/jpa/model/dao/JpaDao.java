@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 
 import com.bs.spring.jpa.model.entity.JpaMember;
+import com.bs.spring.jpa.model.entity.Major;
 
 public interface JpaDao {
 	
@@ -23,5 +24,7 @@ void insertMember(EntityManager em,JpaMember m);
 	List<JpaMember> selectMemberSearch(EntityManager em,Double height);
 	
 	void	insertMember (EntityManager em);
+	
+	Major selectMajor(EntityManager em,Long no);
 	
 }

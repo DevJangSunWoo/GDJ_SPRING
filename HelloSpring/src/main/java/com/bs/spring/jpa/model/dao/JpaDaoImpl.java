@@ -88,10 +88,24 @@ public class JpaDaoImpl implements JpaDao {
 	
 		
 		//entity 저장하기
+		//major  엔티티이기 떄문에  둘다 영속성contex에  올려야함
+		//major도  올려야함  먼저
+		
+		em.persist(major);
 		em.persist(m1);
 		em.persist(m2);
 	
+		//major  엔티티이기 떄문에  둘다 영속성contex에  올려야함
+		//major도  올려야함  먼저
+		
 	}
+
+	@Override
+	public Major selectMajor(EntityManager em, Long no) {
+		// TODO Auto-generated method stub
+		return em.find(Major.class, no);
+	}
+	
 	
 	
 	

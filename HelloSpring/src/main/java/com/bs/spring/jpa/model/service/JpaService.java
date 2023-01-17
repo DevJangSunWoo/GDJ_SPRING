@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.bs.spring.jpa.model.entity.JpaMember;
+import com.bs.spring.jpa.model.entity.Major;
 
 public interface JpaService {
 	void insertMember(JpaMember m);
@@ -20,5 +21,7 @@ public interface JpaService {
 	
 	 void insertMember();
 	
+	  Major  selectMajor(Long no);
+	 
 	
 }

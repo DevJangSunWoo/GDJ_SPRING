@@ -115,6 +115,10 @@ title 값을 전달해거 출력해야함 ->Main Page 가 출력 -->
 	<a   href="${path}/jpa/delete?no=1"> jap 회원 삭제하기</a>
 	
 	<a   href="${path}/jpa/insertMember"> jap 다대일 클래스 저장</a>
+	
+	<a   href="${path}/jpa/major?no=1">학과 조회</a>
+	
+	
 			
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 <!-- 푸터 불러오기 -->

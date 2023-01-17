@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.bs.spring.jpa.model.dao.JpaDao;
 import com.bs.spring.jpa.model.entity.JpaMember;
+import com.bs.spring.jpa.model.entity.Major;
 
 @Service
 public class JpaServiceImpl implements JpaService {
@@ -95,8 +96,16 @@ public class JpaServiceImpl implements JpaService {
 		
 		 et.commit();
 	}
+
+	@Override
+	public Major selectMajor(Long no) {
+		// TODO Auto-generated method stub
+		return dao.selectMajor(em,no);
+	}
 	
 
+	
+	
 	
 	
 }
