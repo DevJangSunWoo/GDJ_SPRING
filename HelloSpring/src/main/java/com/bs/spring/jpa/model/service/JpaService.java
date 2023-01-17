@@ -18,5 +18,7 @@ public interface JpaService {
 
 	List<JpaMember>  selectMemberSearch(Double height);
 	
+	 void insertMember();
+	
 	
 }

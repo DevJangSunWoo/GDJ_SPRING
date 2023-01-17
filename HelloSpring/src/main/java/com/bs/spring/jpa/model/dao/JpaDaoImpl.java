@@ -1,5 +1,6 @@
 package com.bs.spring.jpa.model.dao;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import javax.persistence.EntityManager;
 import org.springframework.stereotype.Repository;
 
 import com.bs.spring.jpa.model.entity.JpaMember;
+import com.bs.spring.jpa.model.entity.Major;
 
 @Repository
 public class JpaDaoImpl implements JpaDao {
@@ -69,6 +71,31 @@ public class JpaDaoImpl implements JpaDao {
 			.setParameter("param", height)
 			.getResultList();
 	}
+
+	@Override
+	public void insertMember(EntityManager em) {
+		// TODO Auto-generated method stub
+		JpaMember m1=JpaMember.builder().memberId("donghun").memberPwd("1234")
+				.age(27).height(180.3).enrollDate(new Date()).intro("우리반 반장").build();
+		
+		JpaMember m2=JpaMember.builder().memberId("nari").memberPwd("333")
+				.age(29).height(167.3).enrollDate(new Date()).intro("우리반 군기반장").build();
+		
+		
+		Major major=Major.builder().majorName("코딩").professor("병승이").build();
+		m1.setMajor(major);
+		m2.setMajor(major);
+	
+		
+		//entity 저장하기
+		em.persist(m1);
+		em.persist(m2);
+	
+	}
+	
+	
+	
+	
 	
 	
 }

@@ -94,4 +94,11 @@ public class JpaContorller {
 	}
 	
 	
+	@RequestMapping("/jpa/insertMember")
+	public String insertMember() {
+		
+		service.insertMember();
+		return "redirect:/";
+	}
+	
 }

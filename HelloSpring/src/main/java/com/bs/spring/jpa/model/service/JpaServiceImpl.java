@@ -83,6 +83,20 @@ public class JpaServiceImpl implements JpaService {
 		
 		return dao.selectMemberSearch(em,height);
 	}
+
+	@Override
+	public void insertMember() {
+		// TODO Auto-generated method stub
+		
+		EntityTransaction et= em.getTransaction();
+		 et.begin(); // 트렌젝션 실행!
+		
+		 dao.insertMember(em);
+		
+		 et.commit();
+	}
+	
+
 	
 	
 }
